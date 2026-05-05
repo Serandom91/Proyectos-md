@@ -1,0 +1,876 @@
+/* ============================================================
+   DESIGN TOKENS — Colsubsidio / Subsidio Vivienda Nueva
+   Fuente: Figma file 8xjBOhPi5ABqjSKYGT6yNT
+   ============================================================ */
+:root {
+  /* Colores */
+  --color-graphite:       #333333;
+  --color-ash:            #707070;
+  --color-sep-low:        #999999;
+  --color-section-bg:     #F6F7FC;
+  --color-outline:        #E2E8EE;
+  --color-medium-grey:    #EBEBEB;
+  --color-disabled:       #D6D6D6;
+  --color-white:          #FFFFFF;
+  --color-primary:        #0067B1;
+  --color-error:          #D32F2F;
+  --color-info-low:       #E2F3FB;
+  --color-info-high:      #8CCEEC;
+
+  /* Espaciado */
+  --space-xxs:  2px;
+  --space-xs:   4px;
+  --space-sm:   8px;
+  --space-md:   12px;
+  --space-lg:   16px;
+  --space-xl:   20px;
+  --space-2xl:  24px;
+  --space-3xl:  32px;
+  --space-4xl:  40px;
+
+  /* Bordes redondeados */
+  --radius-full: 80px;
+  --radius-md:   12px;
+  --radius-sm:   8px;
+  --radius-xs:   6px;
+  --radius-xxs:  4px;
+
+  /* Sombras */
+  --shadow-card:   0px 2px 4px rgba(0,0,0,.10), 0px 4px 6px rgba(0,0,0,.10);
+  --shadow-header: 0px 4px 2px #DBE2EB;
+  --shadow-tooltip: 0px 2px 4px rgba(0,0,0,.10), 0px 4px 6px rgba(0,0,0,.10);
+}
+
+/* ============================================================
+   RESET Y BASE
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { font-size: 16px; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--color-section-bg);
+  color: var(--color-graphite);
+  min-height: 100vh;
+}
+
+p  { line-height: inherit; }
+ul { list-style: none; }
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+  padding: 0;
+}
+
+img { display: block; max-width: 100%; }
+
+/* ============================================================
+   LAYOUT PRINCIPAL
+   ============================================================ */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: var(--color-white);
+  box-shadow: var(--shadow-header);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 168px;
+  z-index: 100;
+}
+
+.main {
+  padding-top: 60px;
+  background: var(--color-section-bg);
+  min-height: 100vh;
+}
+
+.form-page {
+  max-width: 1030px;
+  margin: 0 auto;
+  padding: var(--space-4xl) 0 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3xl);
+}
+
+/* ============================================================
+   HEADER — CONTENIDO INTERNO
+   ============================================================ */
+.header__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+}
+
+.header__divider {
+  width: 1px;
+  height: 24px;
+  background: var(--color-outline);
+  flex-shrink: 0;
+}
+
+.header__title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 25px;
+  color: var(--color-graphite);
+  white-space: nowrap;
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+}
+
+.btn-abandon {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  height: 28px;
+  padding: 2px 12px;
+  border-radius: var(--radius-full);
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.4px;
+  color: var(--color-graphite);
+  transition: background 0.15s;
+}
+
+.btn-abandon:hover { background: var(--color-section-bg); }
+
+/* ============================================================
+   STEPPER
+   ============================================================ */
+.stepper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.stepper__bars {
+  display: flex;
+  gap: var(--space-sm);
+  height: 6px;
+}
+
+.stepper__bar {
+  flex: 1;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: var(--color-medium-grey);
+}
+
+.stepper__bar--active { background: var(--color-graphite); }
+
+.stepper__label {
+  display: flex;
+  gap: var(--space-xs);
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--color-graphite);
+}
+
+.stepper__label strong { font-weight: 700; white-space: nowrap; }
+.stepper__label span   { font-weight: 400; }
+
+/* ============================================================
+   TARJETA DEL FORMULARIO
+   ============================================================ */
+.form-card {
+  width: 100%;
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-4xl) 104px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xl);
+}
+
+/* ============================================================
+   ENCABEZADO DEL FORMULARIO
+   ============================================================ */
+.form-heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.form-heading__title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+  letter-spacing: 0.25px;
+  color: var(--color-graphite);
+}
+
+.form-heading__desc {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.5px;
+  color: var(--color-graphite);
+}
+
+/* ============================================================
+   CAJA DE RESULTADO / PRICING
+   ============================================================ */
+.result-box {
+  width: 100%;
+  background: var(--color-section-bg);
+  border: 1px solid var(--color-outline);
+  border-radius: var(--radius-xs);
+  padding: 12px 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.result-box__category {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 25px;
+  color: var(--color-graphite);
+}
+
+.result-box__name {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+  letter-spacing: 0.25px;
+  color: var(--color-graphite);
+}
+
+/* ============================================================
+   CAMPOS DEL FORMULARIO — LAYOUT
+   ============================================================ */
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xl);
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* ============================================================
+   CAMPO GENÉRICO (Input / Select)
+   ============================================================ */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  width: 400px;
+  max-width: 545px;
+  min-width: 200px;
+}
+
+.field--flex  { flex: 1; width: auto; }
+.field--pt    { padding-top: var(--space-xl); }
+
+/* Fila del label */
+.field__label-row {
+  display: flex;
+  gap: var(--space-xxs);
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.field__label {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  color: var(--color-graphite);
+  white-space: nowrap;
+}
+
+.field__label--wrap { white-space: normal; flex: 1; }
+
+/* Caja de input */
+.field__input-box {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  height: 44px;
+  padding: 10px var(--space-md);
+  background: var(--color-white);
+  border: 1px solid var(--color-ash);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.field__input-box--filled { border-color: var(--color-graphite); }
+
+/* Valor / placeholder */
+.field__value {
+  flex: 1;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.5px;
+  color: var(--color-graphite);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.field__value--placeholder { color: var(--color-ash); }
+
+/* Icono dentro del input */
+.field__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+/* Helper text */
+.field__helper {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.12px;
+  color: var(--color-ash);
+}
+
+/* ============================================================
+   CAMPO — ELEMENTO INPUT / SELECT REAL
+   ============================================================ */
+.field__input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.5px;
+  color: var(--color-graphite);
+  min-width: 0;
+  width: 100%;
+  padding: 0;
+}
+
+.field__input::placeholder { color: var(--color-ash); }
+
+select.field__input {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  color: var(--color-ash);
+}
+
+.field__input:disabled { cursor: not-allowed; }
+
+/* ============================================================
+   CAMPO — ESTADOS INTERACTIVOS
+   ============================================================ */
+.field__label    { transition: color 0.15s; }
+.field__input-box { transition: border-color 0.15s, box-shadow 0.15s; }
+
+/* Hover: label azul, borde sin cambio */
+.field:hover .field__label { color: var(--color-primary); }
+
+/* Focus: label azul + borde azul + elevación */
+.field:focus-within .field__label { color: var(--color-primary); }
+.field:focus-within .field__input-box {
+  border-color: var(--color-primary);
+  box-shadow: 0px 2px 4px -2px rgba(0,0,0,.10), 0px 4px 6px -1px rgba(0,0,0,.10);
+}
+
+/* Disabled */
+.field__input-box:has(.field__input:disabled) {
+  background: #CCCCCC;
+  border-color: var(--color-sep-low);
+  pointer-events: none;
+}
+
+/* Error */
+.field--error .field__input-box { border-color: var(--color-error); }
+.field--error .field__helper    { color: var(--color-error); }
+
+/* Asterisco de campo obligatorio */
+.field__required {
+  color: var(--color-error);
+  margin-left: 2px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   POPOVER / TOOLTIP
+   ============================================================ */
+.popover {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.popover__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: var(--color-graphite);
+  border-radius: 50%;
+  transition: background 0.15s;
+}
+
+.popover__trigger:hover { background: rgba(51,51,51,0.08); }
+
+.popover__tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 263px;
+  background: var(--color-graphite);
+  color: var(--color-white);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.12px;
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-tooltip);
+  white-space: normal;
+  /* Estado: oculto por defecto */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+  z-index: 200;
+}
+
+/* Hover sobre el ícono */
+.popover:hover .popover__tooltip {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Al llenar el campo — aparece automáticamente */
+.field:focus-within .popover__tooltip {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ============================================================
+   UPLOAD / CARGA DE ARCHIVOS
+   ============================================================ */
+.upload-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  width: 400px;
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+}
+
+.upload-field__label {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  color: var(--color-graphite);
+}
+
+.upload-dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-xl);
+  border: 1px dashed var(--color-sep-low);
+  border-radius: var(--radius-xxs);
+  background: var(--color-white);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.upload-dropzone:hover { background: var(--color-section-bg); }
+
+.upload-dropzone--dragover {
+  border-style: solid;
+  border-color: var(--color-primary);
+  background: var(--color-info-low);
+}
+
+.upload-dropzone__text {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  color: var(--color-graphite);
+  text-align: center;
+}
+
+.upload-disclaimer {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 16.5px;
+  letter-spacing: 0.11px;
+  color: var(--color-graphite);
+}
+
+/* Upload Field Variants */
+.upload-field .progress-wrap { display: none; }
+.upload-field .upload-field__files { display: none; flex-direction: column; gap: var(--space-sm); }
+
+.upload-field--uploading .upload-dropzone__text { display: none; }
+.upload-field--uploading .progress-wrap { display: flex; }
+
+.upload-field--uploaded .upload-field__files { display: flex; }
+
+.upload-files-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: 0.5px;
+  color: var(--color-graphite);
+}
+
+/* Ítem de archivo subido */
+.uploaded-file {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  padding: var(--space-md);
+  border: 1px solid var(--color-sep-low);
+  border-radius: var(--radius-xxs);
+  background: var(--color-white);
+}
+
+.uploaded-file__info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  min-width: 0;
+}
+
+.uploaded-file__meta-block {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.uploaded-file__name {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--color-graphite);
+}
+
+.uploaded-file__size {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 16.5px;
+  letter-spacing: 0.11px;
+  color: var(--color-ash);
+}
+
+.uploaded-file__size--error { color: var(--color-error); }
+
+.uploaded-file__action {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+
+.uploaded-file__action:hover { background: var(--color-section-bg); }
+
+/* ============================================================
+   BARRA DE PROGRESO (carga de archivo)
+   ============================================================ */
+.progress-wrap {
+  width: 100%;
+  background: var(--color-white);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.progress-track {
+  width: 100%;
+  height: 6px;
+  background: var(--color-disabled);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--color-graphite);
+  border-radius: 30px;
+}
+
+.progress-label {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 25px;
+  color: var(--color-graphite);
+}
+
+/* ============================================================
+   TÍTULO DE SECCIÓN INTERNA
+   ============================================================ */
+.section-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  color: var(--color-graphite);
+  width: 100%;
+}
+
+/* ============================================================
+   ALERTA SEMÁNTICA (Info)
+   ============================================================ */
+.alert {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  width: 100%;
+}
+
+.alert--info {
+  background: var(--color-info-low);
+  border: 1px solid var(--color-info-high);
+}
+
+.alert__icon { flex-shrink: 0; }
+
+.alert__text {
+  flex: 1;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: 0.11px;
+  color: var(--color-graphite);
+}
+
+/* ============================================================
+   ACCIONES DEL FORMULARIO
+   ============================================================ */
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Botón Atrás (link style) */
+.btn-back {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  height: 44px;
+  padding: 10px var(--space-3xl);
+  border-radius: var(--radius-full);
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  color: var(--color-primary);
+  transition: background 0.15s;
+}
+
+.btn-back:hover { background: rgba(0,103,177,.07); }
+
+/* Botón Siguiente (link + círculo azul) */
+.btn-next {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  padding-left: var(--space-2xl);
+  border-radius: var(--radius-full);
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  color: var(--color-primary);
+  transition: background 0.15s;
+}
+
+.btn-next:hover { background: rgba(0,103,177,.07); }
+
+.btn-next__label { padding-right: var(--space-sm); }
+
+.btn-next__circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background: var(--color-primary);
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.btn-next:hover .btn-next__circle { background: #005a9e; }
+
+/* ============================================================
+   FILAS Y CAMPOS CONDICIONALES
+   ============================================================ */
+.form-row--hidden { display: none; }
+.field--hidden    { display: none; }
+
+/* ============================================================
+   INDICADOR DE AUTO-GUARDADO
+   ============================================================ */
+.save-indicator {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: 0.11px;
+  color: var(--color-sep-low);
+  text-align: right;
+  width: 100%;
+  min-height: 16px;
+  transition: color 0.3s;
+}
+.save-indicator--active { color: var(--color-primary); }
+
+/* ============================================================
+   MODAL — CONFIRMACIÓN DE ABANDONO
+   ============================================================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .35);
+  z-index: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.modal-overlay--active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-3xl);
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+.modal__title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+  color: var(--color-graphite);
+}
+.modal__body {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--color-ash);
+}
+.modal__actions {
+  display: flex;
+  gap: var(--space-sm);
+  justify-content: flex-end;
+}
+.btn-modal-cancel {
+  height: 40px;
+  padding: 0 var(--space-xl);
+  border-radius: var(--radius-full);
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-graphite);
+  border: 1px solid var(--color-outline);
+  transition: background 0.15s;
+}
+.btn-modal-cancel:hover { background: var(--color-section-bg); }
+.btn-modal-confirm {
+  height: 40px;
+  padding: 0 var(--space-xl);
+  border-radius: var(--radius-full);
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-white);
+  background: var(--color-error);
+  transition: background 0.15s;
+}
+.btn-modal-confirm:hover { background: #b71c1c; }
