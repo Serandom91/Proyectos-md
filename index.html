@@ -742,6 +742,10 @@
         </span>
       </button>
 
+      <button class="btn-abandon-mobile" type="button" aria-label="Abandonar solicitud">
+        Abandonar solicitud
+      </button>
+
     </div><!-- /form-actions -->
 
 
@@ -981,15 +985,19 @@ if (ocupacionSel) {
 /* =============================================
    MODAL — Abandonar solicitud
    ============================================= */
-var btnAbandon     = document.querySelector('.btn-abandon');
-var modalOverlay   = document.getElementById('modal-abandonar');
-var btnModalCancel = document.getElementById('modal-cancelar');
-var btnModalConfirm= document.getElementById('modal-confirmar');
+var btnAbandon       = document.querySelector('.btn-abandon');
+var btnAbandonMobile = document.querySelector('.btn-abandon-mobile');
+var modalOverlay     = document.getElementById('modal-abandonar');
+var btnModalCancel   = document.getElementById('modal-cancelar');
+var btnModalConfirm  = document.getElementById('modal-confirmar');
+
+function openAbandonModal() {
+  modalOverlay.classList.add('modal-overlay--active');
+}
 
 if (btnAbandon && modalOverlay) {
-  btnAbandon.addEventListener('click', function() {
-    modalOverlay.classList.add('modal-overlay--active');
-  });
+  btnAbandon.addEventListener('click', openAbandonModal);
+  if (btnAbandonMobile) btnAbandonMobile.addEventListener('click', openAbandonModal);
   btnModalCancel.addEventListener('click', function() {
     modalOverlay.classList.remove('modal-overlay--active');
   });

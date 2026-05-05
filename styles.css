@@ -874,3 +874,162 @@ select.field__input {
   transition: background 0.15s;
 }
 .btn-modal-confirm:hover { background: #b71c1c; }
+
+/* btn-abandon-mobile oculto en desktop (default) */
+.btn-abandon-mobile { display: none; }
+
+/* ============================================================
+   RESPONSIVE — MOBILE (≤ 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+
+  /* ── Header ── */
+  .header {
+    height: 56px;
+    padding: 0 16px;
+  }
+
+  .header__title   { display: none; }
+  .header__divider { display: none; }
+  .header__actions { display: none; }
+
+  .main { padding-top: 56px; }
+
+  /* ── Contenedor de página ── */
+  .form-page {
+    padding: var(--space-xl) 0 40px;
+    gap: var(--space-xl);
+  }
+
+  /* ── Stepper — padding lateral porque vive fuera de la card ── */
+  .stepper {
+    padding: 0 var(--space-lg);
+  }
+
+  /* ── Indicador de guardado ── */
+  .save-indicator {
+    padding: 0 var(--space-lg);
+  }
+
+  /* ── Tarjeta del formulario ── */
+  .form-card {
+    border-radius: 0;
+    box-shadow: none;
+    padding: var(--space-2xl) var(--space-lg);
+    gap: var(--space-2xl);
+  }
+
+  /* ── Encabezado del formulario ── */
+  .form-heading__title {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  /* ── Result box ── */
+  .result-box {
+    padding: 12px var(--space-lg);
+    text-align: center;
+  }
+
+  .result-box__name { font-size: 24px; }
+
+  /* ── Filas — una sola columna ── */
+  .form-row {
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  /* ── Campos — ancho completo ── */
+  .field {
+    width: 100%;
+    max-width: none;
+  }
+
+  /* field--pt no tiene sentido en single-column */
+  .field--pt { padding-top: 0; }
+
+  /* ── Upload — ancho completo ── */
+  .upload-field {
+    width: 100%;
+  }
+
+  /* ── Título de sección interna ── */
+  .section-title {
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  /* ── Tooltips — centrados sobre el campo, encima del input ── */
+  .field { position: relative; }
+  .popover { position: static; }
+  .popover__tooltip {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 8px);
+    top: auto;
+    transform: translateX(-50%);
+    width: calc(100% - 0px);
+    max-width: none;
+  }
+
+  /* ── Acciones del formulario ── */
+  .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-md);
+    padding: 0 var(--space-lg);
+  }
+
+  /* Siguiente — pill sólido azul, full width */
+  .btn-next {
+    width: 100%;
+    justify-content: center;
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: 0 var(--space-2xl);
+    order: 1;
+  }
+
+  .btn-next__circle { display: none; }
+
+  .btn-next__label {
+    padding: 0;
+    color: var(--color-white);
+    font-size: 16px;
+    line-height: 44px;
+  }
+
+  .btn-next:hover {
+    background: #005a9e;
+  }
+
+  /* Anterior — outlined full width */
+  .btn-back {
+    width: 100%;
+    justify-content: center;
+    border: 1px solid var(--color-outline);
+    order: 2;
+  }
+
+  /* Abandonar — link de texto, solo en mobile */
+  .btn-abandon-mobile {
+    display: flex;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 44px;
+    color: var(--color-primary);
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    order: 3;
+  }
+
+  /* ── Modal — margen de 16px a cada lado ── */
+  .modal {
+    width: calc(100% - 32px);
+    max-width: 380px;
+  }
+}
