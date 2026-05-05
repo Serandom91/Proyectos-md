@@ -915,6 +915,7 @@ select.field__input {
   .form-card {
     border-radius: 0;
     box-shadow: none;
+    background: transparent;
     padding: var(--space-2xl) var(--space-lg);
     gap: var(--space-2xl);
   }
